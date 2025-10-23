@@ -1,0 +1,61 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Bed",
+      "x": 85,
+      "y": 67,
+      "width": 180,
+      "height": 180,
+      "zHeight": "55",
+      "rotation": 0
+    },
+    {
+      "name": "Study Table",
+      "x": 390,
+      "y": 78,
+      "width": 120,
+      "height": 120,
+      "zHeight": "75",
+      "rotation": 0
+    },
+    {
+      "name": "Study Chair",
+      "x": 514,
+      "y": 376,
+      "width": 50,
+      "height": 50,
+      "zHeight": "90",
+      "rotation": 0
+    },
+    {
+      "name": "Sofa",
+      "x": 75,
+      "y": 355,
+      "width": 200,
+      "height": 200,
+      "zHeight": "85",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "left",
+      "position": 249,
+      "size": 90,
+      "openingHeight": "210"
+    },
+    {
+      "type": "window",
+      "wall": "top",
+      "position": 404,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    }
+  ]
+}
