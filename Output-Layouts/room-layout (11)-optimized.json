@@ -1,0 +1,153 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Bed",
+      "x": 30,
+      "y": 420,
+      "width": 160,
+      "height": 150,
+      "zHeight": "55",
+      "rotation": 180
+    },
+    {
+      "name": "Bedside Table",
+      "x": 195,
+      "y": 540,
+      "width": 60,
+      "height": 30,
+      "zHeight": "60",
+      "rotation": 0
+    },
+    {
+      "name": "Wardrobe",
+      "x": 176,
+      "y": 30,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 0
+    },
+    {
+      "name": "Wardrobe",
+      "x": 322,
+      "y": 481,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 180
+    },
+    {
+      "name": "Study Table",
+      "x": 630,
+      "y": 208.5,
+      "width": 120,
+      "height": 53,
+      "zHeight": "75",
+      "rotation": 90
+    },
+    {
+      "name": "Study Chair",
+      "x": 570,
+      "y": 210.0,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
+      "rotation": 90
+    },
+    {
+      "name": "Sofa",
+      "x": 610,
+      "y": 30,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 90
+    },
+    {
+      "name": "Sofa",
+      "x": 390,
+      "y": 30,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "window",
+      "wall": "right",
+      "position": 175,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "door",
+      "wall": "top",
+      "position": 28,
+      "size": 90,
+      "openingHeight": "210"
+    },
+    {
+      "type": "window",
+      "wall": "left",
+      "position": 140,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "left",
+      "position": 445,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "right",
+      "position": 432,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "bottom",
+      "position": 191,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "bottom",
+      "position": 556,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "top",
+      "position": 225,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "top",
+      "position": 561,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    }
+  ]
+}

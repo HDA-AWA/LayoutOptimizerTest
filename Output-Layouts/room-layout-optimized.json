@@ -6,57 +6,57 @@
   "furniture": [
     {
       "name": "Bed",
-      "x": 48,
-      "y": 46,
+      "x": 30,
+      "y": 30,
       "width": 160,
       "height": 150,
       "zHeight": "55",
       "rotation": 0
     },
     {
-      "name": "Study Table",
-      "x": 53,
-      "y": 318,
-      "width": 120,
-      "height": 53,
-      "zHeight": "75",
-      "rotation": 0
-    },
-    {
-      "name": "Wardrobe",
-      "x": 70,
-      "y": 469,
-      "width": 150,
-      "height": 89,
-      "zHeight": "200",
-      "rotation": 0
-    },
-    {
-      "name": "Sofa",
-      "x": 300,
-      "y": 95,
-      "width": 160,
-      "height": 80,
-      "zHeight": "85",
-      "rotation": 0
-    },
-    {
-      "name": "Study Chair",
-      "x": 430,
-      "y": 271,
-      "width": 50,
-      "height": 50,
-      "zHeight": "42",
-      "rotation": 0
-    },
-    {
       "name": "Bedside Table",
-      "x": 403,
-      "y": 516,
+      "x": 195,
+      "y": 30,
       "width": 60,
       "height": 30,
       "zHeight": "60",
       "rotation": 0
+    },
+    {
+      "name": "Wardrobe",
+      "x": 620,
+      "y": 30,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 90
+    },
+    {
+      "name": "Study Table",
+      "x": 630,
+      "y": 208.5,
+      "width": 120,
+      "height": 53,
+      "zHeight": "75",
+      "rotation": 90
+    },
+    {
+      "name": "Study Chair",
+      "x": 570,
+      "y": 210.0,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
+      "rotation": 90
+    },
+    {
+      "name": "Sofa",
+      "x": 610,
+      "y": 372,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 90
     }
   ],
   "openings": [
@@ -70,8 +70,8 @@
     },
     {
       "type": "door",
-      "wall": "right",
-      "position": 450,
+      "wall": "bottom",
+      "position": 495,
       "size": 90,
       "openingHeight": "210"
     }

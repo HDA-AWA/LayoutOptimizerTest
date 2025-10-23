@@ -1,0 +1,53 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Sofa",
+      "x": 30,
+      "y": 30,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 270
+    },
+    {
+      "name": "Sofa",
+      "x": 174,
+      "y": 30,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 0
+    },
+    {
+      "name": "Sofa",
+      "x": 390,
+      "y": 30,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 0
+    },
+    {
+      "name": "Sofa",
+      "x": 30,
+      "y": 490,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 180
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "left",
+      "position": 237,
+      "size": 90,
+      "openingHeight": "210"
+    }
+  ]
+}

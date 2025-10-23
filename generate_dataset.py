@@ -48,7 +48,7 @@ def generate_random_layout():
             'name': 'Study Chair',
             'width': 50,
             'height': 50,
-            'zHeight': '90',
+            'zHeight': '42',
             'x': 0, 'y': 0, 'rotation': 0
         }
     ]

@@ -5,39 +5,12 @@
   },
   "furniture": [
     {
-      "name": "Bed",
-      "x": 48,
-      "y": 46,
-      "width": 160,
-      "height": 150,
-      "zHeight": "55",
-      "rotation": 0
-    },
-    {
-      "name": "Study Table",
-      "x": 53,
-      "y": 318,
-      "width": 120,
-      "height": 53,
-      "zHeight": "75",
-      "rotation": 0
-    },
-    {
       "name": "Wardrobe",
       "x": 70,
       "y": 469,
       "width": 150,
       "height": 89,
       "zHeight": "200",
-      "rotation": 0
-    },
-    {
-      "name": "Sofa",
-      "x": 300,
-      "y": 95,
-      "width": 160,
-      "height": 80,
-      "zHeight": "85",
       "rotation": 0
     },
     {
@@ -60,14 +33,6 @@
     }
   ],
   "openings": [
-    {
-      "type": "window",
-      "wall": "right",
-      "position": 175,
-      "size": 120,
-      "openingHeight": "100",
-      "heightFromGround": "90"
-    },
     {
       "type": "door",
       "wall": "right",

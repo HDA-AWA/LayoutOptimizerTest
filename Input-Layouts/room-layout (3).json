@@ -5,15 +5,6 @@
   },
   "furniture": [
     {
-      "name": "Bed",
-      "x": 48,
-      "y": 46,
-      "width": 160,
-      "height": 150,
-      "zHeight": "55",
-      "rotation": 0
-    },
-    {
       "name": "Study Table",
       "x": 53,
       "y": 318,
@@ -60,14 +51,6 @@
     }
   ],
   "openings": [
-    {
-      "type": "window",
-      "wall": "right",
-      "position": 175,
-      "size": 120,
-      "openingHeight": "100",
-      "heightFromGround": "90"
-    },
     {
       "type": "door",
       "wall": "right",

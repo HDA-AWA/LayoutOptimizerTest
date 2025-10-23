@@ -1,0 +1,35 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Wardrobe",
+      "x": 70,
+      "y": 469,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 0
+    },
+    {
+      "name": "Study Chair",
+      "x": 430,
+      "y": 271,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "right",
+      "position": 450,
+      "size": 90,
+      "openingHeight": "210"
+    }
+  ]
+}

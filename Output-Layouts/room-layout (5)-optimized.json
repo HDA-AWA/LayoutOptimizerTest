@@ -1,0 +1,26 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Wardrobe",
+      "x": 30,
+      "y": 30,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 270
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "right",
+      "position": 450,
+      "size": 90,
+      "openingHeight": "210"
+    }
+  ]
+}

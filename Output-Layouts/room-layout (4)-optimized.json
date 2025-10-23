@@ -1,0 +1,44 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Wardrobe",
+      "x": 620,
+      "y": 30,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 90
+    },
+    {
+      "name": "Study Table",
+      "x": 30,
+      "y": 30,
+      "width": 120,
+      "height": 53,
+      "zHeight": "75",
+      "rotation": 0
+    },
+    {
+      "name": "Study Chair",
+      "x": 65.0,
+      "y": 93,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "right",
+      "position": 450,
+      "size": 90,
+      "openingHeight": "210"
+    }
+  ]
+}

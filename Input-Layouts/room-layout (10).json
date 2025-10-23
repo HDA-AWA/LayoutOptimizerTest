@@ -1,0 +1,44 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Wardrobe",
+      "x": 236,
+      "y": 261,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 0
+    },
+    {
+      "name": "Bed",
+      "x": 256,
+      "y": 32,
+      "width": 160,
+      "height": 150,
+      "zHeight": "55",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "window",
+      "wall": "bottom",
+      "position": 365,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "top",
+      "position": 376,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    }
+  ]
+}

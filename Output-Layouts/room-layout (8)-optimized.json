@@ -1,0 +1,60 @@
+{
+  "room": {
+    "width": 800,
+    "height": 600
+  },
+  "furniture": [
+    {
+      "name": "Bed",
+      "x": 30,
+      "y": 30,
+      "width": 160,
+      "height": 150,
+      "zHeight": "55",
+      "rotation": 0
+    },
+    {
+      "name": "Bedside Table",
+      "x": 195,
+      "y": 30,
+      "width": 60,
+      "height": 30,
+      "zHeight": "60",
+      "rotation": 0
+    },
+    {
+      "name": "Bedside Table",
+      "x": 195,
+      "y": 80,
+      "width": 60,
+      "height": 30,
+      "zHeight": "60",
+      "rotation": 0
+    }
+  ],
+  "openings": [
+    {
+      "type": "door",
+      "wall": "bottom",
+      "position": 319,
+      "size": 90,
+      "openingHeight": "210"
+    },
+    {
+      "type": "window",
+      "wall": "right",
+      "position": 110,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    },
+    {
+      "type": "window",
+      "wall": "left",
+      "position": 357,
+      "size": 120,
+      "openingHeight": "100",
+      "heightFromGround": "90"
+    }
+  ]
+}

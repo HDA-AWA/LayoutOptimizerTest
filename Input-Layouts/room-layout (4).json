@@ -5,27 +5,27 @@
   },
   "furniture": [
     {
-      "name": "Bed",
-      "x": 125,
-      "y": 67,
-      "width": 160,
-      "height": 150,
-      "zHeight": "55",
-      "rotation": 0
-    },
-    {
       "name": "Study Table",
-      "x": 584,
-      "y": 186,
+      "x": 53,
+      "y": 318,
       "width": 120,
       "height": 53,
       "zHeight": "75",
       "rotation": 0
     },
     {
+      "name": "Wardrobe",
+      "x": 70,
+      "y": 469,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 0
+    },
+    {
       "name": "Study Chair",
-      "x": 420,
-      "y": 425,
+      "x": 430,
+      "y": 271,
       "width": 50,
       "height": 50,
       "zHeight": "42",
@@ -33,8 +33,8 @@
     },
     {
       "name": "Bedside Table",
-      "x": 359,
-      "y": 353,
+      "x": 403,
+      "y": 516,
       "width": 60,
       "height": 30,
       "zHeight": "60",
@@ -43,17 +43,9 @@
   ],
   "openings": [
     {
-      "type": "window",
-      "wall": "right",
-      "position": 206,
-      "size": 120,
-      "openingHeight": "100",
-      "heightFromGround": "90"
-    },
-    {
       "type": "door",
-      "wall": "bottom",
-      "position": 331,
+      "wall": "right",
+      "position": 450,
       "size": 90,
       "openingHeight": "210"
     }
