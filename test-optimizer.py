@@ -12,7 +12,7 @@ from pathlib import Path
 # ============================================================================
 
 # MODE: 'single' or 'batch'
-MODE = 'batch'
+MODE = 'single'
 
 # For SINGLE mode: specify the input file path
 SINGLE_INPUT = 'Input-Layouts/room-layout (1).json'
