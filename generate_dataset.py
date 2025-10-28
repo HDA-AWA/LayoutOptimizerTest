@@ -2,7 +2,7 @@ import json
 import random
 import os
 import sys
-from optimizerold import LayoutOptimizer
+from optimizer import LayoutOptimizer
 from validator import LayoutValidator
 
 def generate_random_layout():
@@ -117,7 +117,7 @@ def generate_dataset(num_examples=10):
             
             # Optimize
             optimizer = LayoutOptimizer(input_layout)
-            optimized_layout = optimizer.optimize(max_iterations=5000)
+            optimized_layout = optimizer.optimize(max_iterations=500)
             
             # Check if optimization succeeded
             if optimized_layout is not None:

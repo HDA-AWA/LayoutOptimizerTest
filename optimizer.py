@@ -140,7 +140,7 @@ class LayoutOptimizer:
         attempts_without_overlap = 0
         
         for attempt in range(max_iterations):
-            random.seed(attempt)
+            # random.seed(attempt)
             
             candidate = self._generate_layout(door, windows)
             
