@@ -6,8 +6,8 @@
   "furniture": [
     {
       "name": "Bed",
-      "x": 30,
-      "y": 30,
+      "x": 165,
+      "y": 10,
       "width": 160,
       "height": 150,
       "zHeight": "55",

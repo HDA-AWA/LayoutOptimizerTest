@@ -47,6 +47,18 @@ class LayoutValidator:
             # 10. Door width (NEW - Priority 1)
             violations.extend(self._check_door_width())
             
+            # 11. Room size check
+            violations.extend(self._check_room_size())
+            
+            # 12. Sensory and cognitive checks (SUGGESTIONs)
+            violations.extend(self._check_sensory_cognitive())
+            
+            # 13. Door details (additional)
+            violations.extend(self._check_door_details())
+            
+            # 14. Protrusion and flexibility SUGGESTIONs
+            violations.extend(self._check_additional_requirements())
+            
             return violations
     
     def _get_furniture_polygon(self, item):
@@ -348,10 +360,10 @@ class LayoutValidator:
         """Windows should be reachable for wheelchair users"""
         violations = []
         
-        # DIN 18040-2 recommendations for wheelchair accessibility
-        MIN_SILL_HEIGHT = 60   # cm - minimum for visibility while seated
-        MAX_SILL_HEIGHT = 110  # cm - maximum for operation while seated
-        MAX_HANDLE_HEIGHT = 140  # cm - maximum reach height
+        # Updated DIN 18040-2 recommendations for wheelchair accessibility
+        MIN_SILL_HEIGHT = 60   # cm - minimum for visibility while seated (but practically lower possible)
+        MAX_SILL_HEIGHT = 60  # cm - maximum for views while seated
+        MAX_HANDLE_HEIGHT = 105  # cm - maximum reach height for handles
         
         for opening in self.openings:
             if opening['type'] != 'window':
@@ -370,7 +382,7 @@ class LayoutValidator:
             elif sill_height > MAX_SILL_HEIGHT:
                 violations.append(
                     f"Window sill too high: {sill_height}cm "
-                    f"(should be ≤{MAX_SILL_HEIGHT}cm for wheelchair operation)"
+                    f"(should be ≤{MAX_SILL_HEIGHT}cm for seated views)"
                 )
             
             # Check handle reachability
@@ -462,13 +474,26 @@ class LayoutValidator:
         return approach_box
     
     def _check_bed_clearances(self):
-        """Bed needs 150cm + 120cm on long sides"""
+        """Bed needs 150cm on one long side and 120cm on the other"""
         violations = []
         
         # Find bed
         bed = next((f for f in self.furniture if 'bed' in f['name'].lower()), None)
         if not bed:
             return violations
+        
+        # Check bed height
+        bed_height = int(bed.get('zHeight', 55))
+        if not (45 <= bed_height <= 52):
+            violations.append(
+                f"Bed height violation: {bed_height}cm "
+                f"(should be between 45-52cm for easy transfers)"
+            )
+        
+        # SUGGESTION for under-bed clearance (assuming no data, add info)
+        violations.append(
+            "INFO: Ensure under-bed clearance ≥67cm for wheelchair footrests in care scenarios"
+        )
         
         # Get bed dimensions (considering rotation)
         bed_poly = self._get_furniture_polygon(bed)
@@ -478,25 +503,35 @@ class LayoutValidator:
         if rot in [0, 180]:
             long_side_length = bed['height']
             # Left and right sides are long
-            sides = [
-                ('left', box(bed['x'] - 150, bed['y'], bed['x'], bed['y'] + bed['height'])),
-                ('right', box(bed['x'] + bed['width'], bed['y'], 
-                            bed['x'] + bed['width'] + 150, bed['y'] + bed['height']))
-            ]
+            sides_150 = {
+                'left': box(bed['x'] - 150, bed['y'], bed['x'], bed['y'] + bed['height']),
+                'right': box(bed['x'] + bed['width'], bed['y'], 
+                            bed['x'] + bed['width'] + 150, bed['y'] + bed['height'])
+            }
+            sides_120 = {
+                'left': box(bed['x'] - 120, bed['y'], bed['x'], bed['y'] + bed['height']),
+                'right': box(bed['x'] + bed['width'], bed['y'], 
+                            bed['x'] + bed['width'] + 120, bed['y'] + bed['height'])
+            }
         else:  # 90 or 270
             long_side_length = bed['width']
             # Top and bottom are long
-            sides = [
-                ('top', box(bed['x'], bed['y'] - 150, bed['x'] + bed['width'], bed['y'])),
-                ('bottom', box(bed['x'], bed['y'] + bed['height'], 
-                            bed['x'] + bed['width'], bed['y'] + bed['height'] + 150))
-            ]
+            sides_150 = {
+                'top': box(bed['x'], bed['y'] - 150, bed['x'] + bed['width'], bed['y']),
+                'bottom': box(bed['x'], bed['y'] + bed['height'], 
+                            bed['x'] + bed['width'], bed['y'] + bed['height'] + 150)
+            }
+            sides_120 = {
+                'top': box(bed['x'], bed['y'] - 120, bed['x'] + bed['width'], bed['y']),
+                'bottom': box(bed['x'], bed['y'] + bed['height'], 
+                            bed['x'] + bed['width'], bed['y'] + bed['height'] + 120)
+            }
         
         # Check each side clearance
-        side_clearances = []
         room_bounds = box(0, 0, self.room['width'], self.room['height'])
         
-        for side_name, clearance_zone in sides:
+        clear_150_sides = []
+        for side_name, clearance_zone in sides_150.items():
             # Check if in room bounds
             if not room_bounds.contains(clearance_zone):
                 continue
@@ -512,12 +547,40 @@ class LayoutValidator:
                     break
             
             if not blocked:
-                side_clearances.append(side_name)
+                clear_150_sides.append(side_name)
         
         # Need at least one side with 150cm clear
-        if len(side_clearances) < 1:
+        has_150 = len(clear_150_sides) >= 1
+        has_120_on_other = False
+        
+        if has_150:
+            for clear_side in clear_150_sides:
+                other_sides = [s for s in sides_150 if s != clear_side]
+                for other_side in other_sides:
+                    clearance_zone_120 = sides_120[other_side]
+                    if not room_bounds.contains(clearance_zone_120):
+                        continue
+                    blocked_120 = False
+                    for item in self.furniture:
+                        if 'bed' in item['name'].lower():
+                            continue
+                        item_poly = self._get_furniture_polygon(item)
+                        if clearance_zone_120.intersects(item_poly):
+                            blocked_120 = True
+                            break
+                    if not blocked_120:
+                        has_120_on_other = True
+                        break
+                if has_120_on_other:
+                    break
+        
+        if not has_150:
             violations.append(
                 "Bed clearance: No long side has 150cm clearance available"
+            )
+        if has_150 and not has_120_on_other:
+            violations.append(
+                "Bed clearance: No other long side has at least 120cm clearance available"
             )
         
         return violations
@@ -555,7 +618,7 @@ class LayoutValidator:
                 'min_height': 0,
                 'max_height': 140,  # Top shelf max reach
                 'reason': 'wheelchair reach limit',
-                'check_type': 'warning'  # Just a warning, not hard violation
+                'check_type': 'SUGGESTION'  # Just a SUGGESTION, not hard violation
             }
         }
         
@@ -570,18 +633,18 @@ class LayoutValidator:
                     min_h = standard['min_height']
                     max_h = standard['max_height']
                     reason = standard['reason']
-                    is_warning = standard.get('check_type') == 'warning'
+                    is_SUGGESTION = standard.get('check_type') == 'SUGGESTION'
                     
                     # Check height compliance
                     if furniture_z_height < min_h:
                         msg = (f"Height violation: {item['name']} at {furniture_z_height}cm "
                                f"(should be ≥{min_h}cm for {reason})")
-                        violations.append(msg if not is_warning else f"WARNING: {msg}")
+                        violations.append(msg if not is_SUGGESTION else f"SUGGESTION: {msg}")
                     
                     elif furniture_z_height > max_h:
                         msg = (f"Height violation: {item['name']} at {furniture_z_height}cm "
                                f"(should be ≤{max_h}cm for {reason})")
-                        violations.append(msg if not is_warning else f"WARNING: {msg}")
+                        violations.append(msg if not is_SUGGESTION else f"SUGGESTION: {msg}")
                     
                     break  # Only check first matching category
         
@@ -664,5 +727,71 @@ class LayoutValidator:
                     f"INFO: Door is {door_width}cm wide "
                     f"(recommended ≥{RECOMMENDED_DOOR_WIDTH}cm for comfortable wheelchair passage)"
                 )
+        
+        return violations
+    
+    def _check_room_size(self):
+        """Check minimum room size for bedroom"""
+        violations = []
+        MIN_AREA_SINGLE = 100000  # 10 m² in cm² (assuming single bed)
+        
+        area = self.room['width'] * self.room['height']
+        if area < MIN_AREA_SINGLE:
+            violations.append(
+                f"Room size violation: Area {area / 10000:.1f}m² "
+                f"(should be ≥10m² for single bedroom accessibility)"
+            )
+        
+        return violations
+    
+    def _check_sensory_cognitive(self):
+        """Add SUGGESTIONs for sensory and cognitive requirements"""
+        violations = []
+        violations.append("SUGGESTION: Ensure luminance contrasts ≥0.4 for visual impairments")
+        violations.append("SUGGESTION: Provide tactile guides for orientation")
+        violations.append("SUGGESTION: Use glare-free lighting (100-300 lux)")
+        violations.append("SUGGESTION: Floors should be slip-resistant (R9 rating)")
+        violations.append("SUGGESTION: Include two-sense emergency alarms (visual/audible)")
+        
+        return violations
+    
+    def _check_door_details(self):
+        violations = []
+        MIN_DOOR_HEIGHT = 205  # cm
+        MAX_THRESHOLD = 2  # cm
+        MAX_FORCE = 30  # N
+
+        for opening in self.openings:
+            if opening['type'] != 'door':
+                continue
+
+            door_height = opening.get('openingHeight', 0)
+
+            try:
+                door_height = int(door_height)
+            except (ValueError, TypeError):
+                door_height = 0
+
+            if door_height and door_height < MIN_DOOR_HEIGHT:
+                violations.append(
+                    f"Door height violation: {door_height}cm "
+                    f"(should be ≥{MIN_DOOR_HEIGHT}cm)"
+                )
+            else:
+                violations.append("INFO: Ensure door height ≥205cm")
+
+            violations.append("INFO: Ensure door thresholds ≤2cm")
+            violations.append("INFO: Ensure door opening force ≤30N")
+            violations.append("INFO: Prefer outward-opening doors for safety")
+
+        return violations
+
+    
+    def _check_additional_requirements(self):
+        """Add SUGGESTIONs for protrusions, flexibility, etc."""
+        violations = []
+        violations.append("SUGGESTION: Do checks for wall protrusions - ensure ≤15cm above floor")
+        violations.append("SUGGESTION: Ensure layout flexibility for care aids (removable elements)")
+        violations.append("INFO: Consider integration with corridors (≥120cm wide paths)")
         
         return violations

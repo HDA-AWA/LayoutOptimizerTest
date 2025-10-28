@@ -1,79 +1,79 @@
 {
   "room": {
-    "width": 800,
-    "height": 600
+    "width": 741,
+    "height": 378
   },
   "furniture": [
     {
       "name": "Bed",
-      "x": 48,
-      "y": 46,
+      "x": 153,
+      "y": 26,
       "width": 160,
       "height": 150,
       "zHeight": "55",
       "rotation": 0
     },
     {
-      "name": "Study Table",
-      "x": 53,
-      "y": 318,
-      "width": 120,
-      "height": 53,
-      "zHeight": "75",
-      "rotation": 0
-    },
-    {
-      "name": "Wardrobe",
-      "x": 70,
-      "y": 469,
-      "width": 150,
-      "height": 89,
-      "zHeight": "200",
-      "rotation": 0
-    },
-    {
       "name": "Sofa",
       "x": 300,
-      "y": 95,
+      "y": 247,
       "width": 160,
       "height": 80,
       "zHeight": "85",
       "rotation": 0
     },
     {
-      "name": "Study Chair",
-      "x": 430,
-      "y": 271,
-      "width": 50,
-      "height": 50,
-      "zHeight": "42",
+      "name": "Wardrobe",
+      "x": 534,
+      "y": 114,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
       "rotation": 0
     },
     {
       "name": "Bedside Table",
-      "x": 403,
-      "y": 516,
+      "x": 274,
+      "y": 329,
       "width": 60,
       "height": 30,
       "zHeight": "60",
+      "rotation": 0
+    },
+    {
+      "name": "Study Table",
+      "x": 220,
+      "y": 284,
+      "width": 120,
+      "height": 53,
+      "zHeight": "75",
+      "rotation": 0
+    },
+    {
+      "name": "Study Chair",
+      "x": 109,
+      "y": 268,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
       "rotation": 0
     }
   ],
   "openings": [
     {
-      "type": "window",
+      "type": "door",
       "wall": "right",
-      "position": 175,
+      "position": 258,
+      "size": 90,
+      "openingHeight": "210"
+    },
+    {
+      "type": "window",
+      "wall": "top",
+      "position": 301,
       "size": 120,
       "openingHeight": "100",
       "heightFromGround": "90"
-    },
-    {
-      "type": "door",
-      "wall": "bottom",
-      "position": 495,
-      "size": 90,
-      "openingHeight": "210"
     }
   ]
 }

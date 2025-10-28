@@ -6,8 +6,8 @@
   "furniture": [
     {
       "name": "Bed",
-      "x": 30,
-      "y": 30,
+      "x": 155,
+      "y": 10,
       "width": 160,
       "height": 150,
       "zHeight": "55",
@@ -15,8 +15,8 @@
     },
     {
       "name": "Bedside Table",
-      "x": 195,
-      "y": 30,
+      "x": 320,
+      "y": 10,
       "width": 60,
       "height": 30,
       "zHeight": "60",
@@ -24,8 +24,8 @@
     },
     {
       "name": "Bedside Table",
-      "x": 195,
-      "y": 80,
+      "x": 90,
+      "y": 10,
       "width": 60,
       "height": 30,
       "zHeight": "60",

@@ -1,6 +1,6 @@
 # test_optimizer.py
 import json
-from optimizer import LayoutOptimizer
+from optimizerold import LayoutOptimizer
 
 # Load input layout
 with open('layouts/room-layout-multiple.json') as f:

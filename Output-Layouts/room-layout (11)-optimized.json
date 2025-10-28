@@ -6,17 +6,26 @@
   "furniture": [
     {
       "name": "Bed",
-      "x": 30,
-      "y": 420,
+      "x": 315,
+      "y": 440,
       "width": 160,
       "height": 150,
       "zHeight": "55",
-      "rotation": 180
+      "rotation": 0
     },
     {
       "name": "Bedside Table",
-      "x": 195,
-      "y": 540,
+      "x": 430,
+      "y": 390,
+      "width": 60,
+      "height": 30,
+      "zHeight": "60",
+      "rotation": 0
+    },
+    {
+      "name": "Bedside Table",
+      "x": 200,
+      "y": 390,
       "width": 60,
       "height": 30,
       "zHeight": "60",
@@ -24,16 +33,7 @@
     },
     {
       "name": "Wardrobe",
-      "x": 176,
-      "y": 30,
-      "width": 150,
-      "height": 89,
-      "zHeight": "200",
-      "rotation": 0
-    },
-    {
-      "name": "Wardrobe",
-      "x": 322,
+      "x": 30,
       "y": 481,
       "width": 150,
       "height": 89,
@@ -41,9 +41,18 @@
       "rotation": 180
     },
     {
+      "name": "Wardrobe",
+      "x": 492,
+      "y": 331,
+      "width": 150,
+      "height": 89,
+      "zHeight": "200",
+      "rotation": 180
+    },
+    {
       "name": "Study Table",
-      "x": 630,
-      "y": 208.5,
+      "x": 650,
+      "y": 49,
       "width": 120,
       "height": 53,
       "zHeight": "75",
@@ -51,25 +60,43 @@
     },
     {
       "name": "Study Chair",
-      "x": 570,
-      "y": 210.0,
+      "x": 590,
+      "y": 150,
       "width": 50,
       "height": 50,
       "zHeight": "42",
       "rotation": 90
     },
     {
-      "name": "Sofa",
-      "x": 610,
-      "y": 30,
-      "width": 160,
-      "height": 80,
-      "zHeight": "85",
-      "rotation": 90
+      "name": "Study Table",
+      "x": 0,
+      "y": 140,
+      "width": 120,
+      "height": 53,
+      "zHeight": "75",
+      "rotation": 270
+    },
+    {
+      "name": "Study Chair",
+      "x": 160,
+      "y": 161,
+      "width": 50,
+      "height": 50,
+      "zHeight": "42",
+      "rotation": 270
     },
     {
       "name": "Sofa",
-      "x": 390,
+      "x": 30,
+      "y": 306,
+      "width": 160,
+      "height": 80,
+      "zHeight": "85",
+      "rotation": 270
+    },
+    {
+      "name": "Sofa",
+      "x": 262,
       "y": 30,
       "width": 160,
       "height": 80,

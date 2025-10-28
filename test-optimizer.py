@@ -12,10 +12,10 @@ from pathlib import Path
 # ============================================================================
 
 # MODE: 'single' or 'batch'
-MODE = 'single'
+MODE = 'batch'
 
 # For SINGLE mode: specify the input file path
-SINGLE_INPUT = 'Input-Layouts/room-layout (1).json'
+SINGLE_INPUT = 'Input-Layouts/room-layout (12).json'
 
 # For BATCH mode: specify the input folder
 BATCH_INPUT_FOLDER = 'Input-Layouts'
@@ -24,7 +24,7 @@ BATCH_INPUT_FOLDER = 'Input-Layouts'
 OUTPUT_FOLDER = 'Output-Layouts'
 
 # Optimizer settings
-MAX_ITERATIONS = 200
+MAX_ITERATIONS = 500
 
 # ============================================================================
 
@@ -64,7 +64,7 @@ def process_layout(input_file, output_folder):
         with open(input_file, 'r') as f:
             layout = json.load(f)
     except Exception as e:
-        print(f"❌ Error loading file: {e}")
+        print(f" Error loading file: {e}")
         return False
     
     # Show input
@@ -72,7 +72,7 @@ def process_layout(input_file, output_folder):
     bed_count = sum(1 for f in furniture if 'bed' in f['name'].lower() and 'bedside' not in f['name'].lower())
     bedside_count = sum(1 for f in furniture if 'bedside' in f['name'].lower())
     
-    print(f"\n📦 INPUT:")
+    print(f"\nINPUT:")
     print(f"   Room: {layout['room']['width']}x{layout['room']['height']}cm")
     print(f"   Total furniture: {len(furniture)}")
     print(f"   - Beds: {bed_count}")
@@ -83,13 +83,13 @@ def process_layout(input_file, output_folder):
     try:
         from optimizer import LayoutOptimizer
         
-        print(f"\n🔧 RUNNING OPTIMIZER V3...")
+        print(f"\n RUNNING OPTIMIZER V3...")
         
         optimizer = LayoutOptimizer(layout)
         optimized = optimizer.optimize(max_iterations=MAX_ITERATIONS)
         
         if not optimized:
-            print("\n❌ No solution found")
+            print("\n No solution found")
             return False
         
         # Check output
@@ -97,7 +97,7 @@ def process_layout(input_file, output_folder):
         output_bed = sum(1 for f in output_furniture if 'bed' in f['name'].lower() and 'bedside' not in f['name'].lower())
         output_bedside = sum(1 for f in output_furniture if 'bedside' in f['name'].lower())
         
-        print(f"\n📦 OUTPUT:")
+        print(f"\n OUTPUT:")
         print(f"   Total furniture: {len(output_furniture)}")
         print(f"   - Beds: {output_bed}")
         print(f"   - Bedside tables: {output_bedside}")
@@ -106,39 +106,39 @@ def process_layout(input_file, output_folder):
         # Critical check: Did bedside survive?
         if bedside_count > 0:
             if output_bedside == bedside_count:
-                print(f"   ✅ BEDSIDE PRESERVED: {output_bedside} table(s)")
+                print(f"    BEDSIDE PRESERVED: {output_bedside} table(s)")
             else:
-                print(f"   ⚠️  BEDSIDE COUNT: Had {bedside_count}, now have {output_bedside}")
-        
+                print(f"     BEDSIDE COUNT: Had {bedside_count}, now have {output_bedside}")
+    
         # Check distance
         bed = next((f for f in output_furniture if 'bed' in f['name'].lower() and 'bedside' not in f['name'].lower()), None)
         bedside = next((f for f in output_furniture if 'bedside' in f['name'].lower()), None)
         
         if bed and bedside:
             distance = calculate_distance(bed, bedside)
-            print(f"\n📏 DISTANCE: {distance:.1f}cm ({'✅ ≤60cm' if distance <= 60 else '⚠️  >60cm'})")
+            print(f"\n DISTANCE: {distance:.1f}cm ({' ≤60cm' if distance <= 60 else '  >60cm'})")
         
         # Get violation report
         report = optimizer.get_violation_report()
         
         print(f"\n" + "="*80)
-        print(f"📋 DETAILED VIOLATION REPORT")
+        print(f" DETAILED VIOLATION REPORT")
         print(f"="*80)
         
-        print(f"\n🔴 INITIAL VIOLATIONS:")
+        print(f"\n INITIAL VIOLATIONS:")
         print_all_violations(report['initial'], "INITIAL")
         
         print(f"\n" + "="*80)
-        print(f"\n✅ FIXED VIOLATIONS:")
+        print(f"\n FIXED VIOLATIONS:")
         print_all_violations(report['fixed'], "FIXED")
         
         print(f"\n" + "="*80)
-        print(f"\n⚠️  REMAINING VIOLATIONS:")
+        print(f"\n  REMAINING VIOLATIONS:")
         print_all_violations(report['remaining'], "REMAINING")
         
         if report['unplaced_furniture']:
             print(f"\n" + "="*80)
-            print(f"\n❌ UNPLACED FURNITURE:")
+            print(f"\n UNPLACED FURNITURE:")
             for item in report['unplaced_furniture']:
                 print(f"  • {item['name']} ({item['width']}×{item['height']}cm)")
         
@@ -153,13 +153,13 @@ def process_layout(input_file, output_folder):
         with open(output_path, 'w') as f:
             json.dump(optimized, f, indent=2)
         
-        print(f"\n💾 Saved to: {output_path}")
+        print(f"\n Saved to: {output_path}")
         
         # Summary
         initial_count = sum(len(v) for v in report['initial'].values())
         remaining_count = sum(len(v) for v in report['remaining'].values())
         
-        print(f"\n✅ SUCCESS")
+        print(f"\n SUCCESS")
         print(f"   Violations: {initial_count} → {remaining_count}")
         print(f"   Improvement: {initial_count - remaining_count} violations fixed")
         print("="*80 + "\n")
@@ -167,11 +167,11 @@ def process_layout(input_file, output_folder):
         return True
         
     except ImportError as e:
-        print(f"❌ Cannot import optimizer_v3: {e}")
+        print(f" Cannot import optimizer_v3: {e}")
         print(f"   Make sure optimizer_v3.py is in the same folder")
         return False
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f" Error: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -179,12 +179,12 @@ def process_layout(input_file, output_folder):
 
 def process_single():
     """Process single file mode"""
-    print("\n🎯 MODE: SINGLE FILE")
+    print("\n MODE: SINGLE FILE")
     print(f"Input: {SINGLE_INPUT}")
     print(f"Output folder: {OUTPUT_FOLDER}\n")
     
     if not os.path.exists(SINGLE_INPUT):
-        print(f"❌ Error: File not found: {SINGLE_INPUT}")
+        print(f" Error: File not found: {SINGLE_INPUT}")
         print("\nTo fix:")
         print(f"  1. Create the file: {SINGLE_INPUT}")
         print(f"  2. Or change SINGLE_INPUT in this script")
@@ -193,19 +193,19 @@ def process_single():
     success = process_layout(SINGLE_INPUT, OUTPUT_FOLDER)
     
     if success:
-        print("🎉 DONE!")
+        print(" DONE!")
     else:
-        print("❌ FAILED!")
+        print(" FAILED!")
 
 
 def process_batch():
     """Process all JSON files in folder"""
-    print("\n🎯 MODE: BATCH PROCESSING")
+    print("\n MODE: BATCH PROCESSING")
     print(f"Input folder: {BATCH_INPUT_FOLDER}")
     print(f"Output folder: {OUTPUT_FOLDER}\n")
     
     if not os.path.exists(BATCH_INPUT_FOLDER):
-        print(f"❌ Error: Folder not found: {BATCH_INPUT_FOLDER}")
+        print(f" Error: Folder not found: {BATCH_INPUT_FOLDER}")
         print("\nTo fix:")
         print(f"  1. Create the folder: {BATCH_INPUT_FOLDER}")
         print(f"  2. Or change BATCH_INPUT_FOLDER in this script")
@@ -215,10 +215,10 @@ def process_batch():
     json_files = list(Path(BATCH_INPUT_FOLDER).glob('*.json'))
     
     if not json_files:
-        print(f"❌ No JSON files found in: {BATCH_INPUT_FOLDER}")
+        print(f" No JSON files found in: {BATCH_INPUT_FOLDER}")
         return
     
-    print(f"📁 Found {len(json_files)} layout file(s)\n")
+    print(f" Found {len(json_files)} layout file(s)\n")
     
     results = []
     
@@ -235,18 +235,18 @@ def process_batch():
     successful = sum(1 for _, success in results if success)
     failed = len(results) - successful
     
-    print(f"\n📊 SUMMARY:")
+    print(f"\n SUMMARY:")
     print(f"   Total files: {len(results)}")
-    print(f"   ✅ Successful: {successful}")
-    print(f"   ❌ Failed: {failed}")
+    print(f"    Successful: {successful}")
+    print(f"    Failed: {failed}")
     
     if failed > 0:
-        print(f"\n❌ Failed files:")
+        print(f"\n Failed files:")
         for filename, success in results:
             if not success:
                 print(f"   • {filename}")
     
-    print(f"\n📂 All outputs saved to: {OUTPUT_FOLDER}")
+    print(f"\n All outputs saved to: {OUTPUT_FOLDER}")
     print("="*80)
 
 
@@ -261,7 +261,7 @@ def main():
     elif MODE == 'batch':
         process_batch()
     else:
-        print(f"❌ Invalid MODE: {MODE}")
+        print(f" Invalid MODE: {MODE}")
         print("   Valid options: 'single' or 'batch'")
         print("   Change MODE in the configuration section")
 

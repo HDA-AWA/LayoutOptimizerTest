@@ -6,17 +6,17 @@
   "furniture": [
     {
       "name": "Wardrobe",
-      "x": 620,
-      "y": 30,
+      "x": 30,
+      "y": 481,
       "width": 150,
       "height": 89,
       "zHeight": "200",
-      "rotation": 90
+      "rotation": 180
     },
     {
       "name": "Study Table",
-      "x": 630,
-      "y": 208.5,
+      "x": 580,
+      "y": 49,
       "width": 120,
       "height": 53,
       "zHeight": "75",
@@ -24,8 +24,8 @@
     },
     {
       "name": "Study Chair",
-      "x": 570,
-      "y": 210.0,
+      "x": 590,
+      "y": 150,
       "width": 50,
       "height": 50,
       "zHeight": "42",
@@ -34,11 +34,11 @@
     {
       "name": "Sofa",
       "x": 30,
-      "y": 490,
+      "y": 30,
       "width": 160,
       "height": 80,
       "zHeight": "85",
-      "rotation": 180
+      "rotation": 270
     }
   ],
   "openings": [
