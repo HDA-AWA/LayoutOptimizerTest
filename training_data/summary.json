@@ -3,71 +3,71 @@
     "example": 1,
     "input_file": "training_data/example_001_input.json",
     "output_file": "training_data/example_001_output.json",
-    "violation_count": 24,
+    "violation_count": 23,
     "furniture_count": 6,
-    "room_size": "600x450"
+    "room_size": "750x550"
   },
   {
     "example": 2,
     "input_file": "training_data/example_002_input.json",
     "output_file": "training_data/example_002_output.json",
-    "violation_count": 23,
+    "violation_count": 25,
     "furniture_count": 6,
-    "room_size": "950x600"
+    "room_size": "450x350"
   },
   {
     "example": 3,
     "input_file": "training_data/example_003_input.json",
     "output_file": "training_data/example_003_output.json",
-    "violation_count": 25,
-    "furniture_count": 5,
-    "room_size": "500x500"
+    "violation_count": 26,
+    "furniture_count": 6,
+    "room_size": "850x550"
   },
   {
     "example": 4,
     "input_file": "training_data/example_004_input.json",
     "output_file": "training_data/example_004_output.json",
-    "violation_count": 22,
+    "violation_count": 31,
     "furniture_count": 6,
-    "room_size": "700x400"
+    "room_size": "450x450"
   },
   {
     "example": 5,
     "input_file": "training_data/example_005_input.json",
     "output_file": "training_data/example_005_output.json",
-    "violation_count": 24,
-    "furniture_count": 5,
+    "violation_count": 36,
+    "furniture_count": 6,
     "room_size": "700x350"
   },
   {
     "example": 6,
     "input_file": "training_data/example_006_input.json",
     "output_file": "training_data/example_006_output.json",
-    "violation_count": 27,
+    "violation_count": 26,
     "furniture_count": 6,
-    "room_size": "450x650"
+    "room_size": "950x750"
   },
   {
     "example": 7,
     "input_file": "training_data/example_007_input.json",
     "output_file": "training_data/example_007_output.json",
-    "violation_count": 24,
-    "furniture_count": 5,
-    "room_size": "850x300"
+    "violation_count": 27,
+    "furniture_count": 6,
+    "room_size": "700x500"
   },
   {
     "example": 8,
     "input_file": "training_data/example_008_input.json",
     "output_file": "training_data/example_008_output.json",
-    "violation_count": 26,
-    "furniture_count": 5,
-    "room_size": "400x400"
+    "violation_count": 28,
+    "furniture_count": 6,
+    "room_size": "700x650"
   },
   {
     "example": 9,
     "input_file": "training_data/example_009_input.json",
     "output_file": "training_data/example_009_output.json",
-    "violation_count": 26,
+    "violation_count": 27,
     "furniture_count": 6,
     "room_size": "550x650"
   },
@@ -75,8 +75,8 @@
     "example": 10,
     "input_file": "training_data/example_010_input.json",
     "output_file": "training_data/example_010_output.json",
-    "violation_count": 22,
+    "violation_count": 26,
     "furniture_count": 5,
-    "room_size": "850x750"
+    "room_size": "950x450"
   }
 ]
